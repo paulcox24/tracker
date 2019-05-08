@@ -58,7 +58,7 @@ class ServiceProvider extends PragmaRXServiceProvider
      *
      * @var bool
      */
-    protected $defer = false;
+    protected $defer = true;
 
     protected $userChecked = false;
 
@@ -73,7 +73,7 @@ class ServiceProvider extends PragmaRXServiceProvider
     {
         parent::boot();
 
-        if (!$this->getConfig('enabled')) {
+        if (!$this->getConfig('enabled') || $this->app->request->is('api/*')) {
             return false;
         }
 
@@ -106,8 +106,8 @@ class ServiceProvider extends PragmaRXServiceProvider
     public function register()
     {
         parent::register();
-
-        if ($this->getConfig('enabled')) {
+        \Log::info("I am local");
+        if ($this->getConfig('enabled') && !$this->app->request->is('api/*')) {
             $this->registerAuthentication();
 
             $this->registerCache();

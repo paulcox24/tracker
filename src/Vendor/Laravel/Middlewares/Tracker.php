@@ -17,7 +17,7 @@ class Tracker
      */
     public function handle($request, Closure $next)
     {
-        if (Config::get('tracker.enabled')) {
+        if (Config::get('tracker.enabled') && !$request->is('api/*')) {
             app('tracker')->boot();
         }
 
