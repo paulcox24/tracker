@@ -58,7 +58,7 @@ class ServiceProvider extends PragmaRXServiceProvider
      *
      * @var bool
      */
-    protected $defer = true;
+    protected $defer = false;
 
     protected $userChecked = false;
 
