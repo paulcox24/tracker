@@ -106,7 +106,6 @@ class ServiceProvider extends PragmaRXServiceProvider
     public function register()
     {
         parent::register();
-        \Log::info("I am local");
         if ($this->getConfig('enabled') && !$this->app->request->is('api/*')) {
             $this->registerAuthentication();
 
