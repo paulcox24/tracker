@@ -28,9 +28,10 @@ class FastSession extends PhpSession
     return session_status() === PHP_SESSION_ACTIVE;
   }
 
-  public function get($key, $namespace = null)
+  public function put($key, $value, $namespace = null)
   {
     $this->startSession();
-    parent::get($key, $namespace = null);
+    parent::put($key, $value, $namespace = null);
   }
+
 }
